@@ -42,7 +42,7 @@ input.onButtonPressed(Button.A, function () {
                     `)
                 neZha.setServoAngel(neZha.ServoTypeList._180, neZha.ServoList.S1, 15)
                 前进(230)
-                右转(1000)
+                右转(1200)
                 right = 1
                 break;
             }
@@ -73,11 +73,15 @@ input.onButtonPressed(Button.A, function () {
         } else {
             外巡线(1)
         }
-        if (input.runningTime() - T2 >= 3000 && right == 1 && (PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.One, PlanetX_Basic.TrackbitType.State_0) && (PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Two, PlanetX_Basic.TrackbitType.State_1) && (PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Three, PlanetX_Basic.TrackbitType.State_1) && PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Four, PlanetX_Basic.TrackbitType.State_1))))) {
-            右转(850)
+        if (input.runningTime() - T2 >= 1500 && right == 1) {
+            basic.showIcon(IconNames.SmallHeart)
+            左转(600)
+            前进(300)
+            右转(1100)
+            前进(200)
             T9 = input.runningTime()
             while (true) {
-                if (input.runningTime() - T9 >= 3000) {
+                if (input.runningTime() - T9 >= 2100) {
                     break;
                 } else {
                     外巡线(1)
@@ -90,7 +94,7 @@ input.onButtonPressed(Button.A, function () {
     }
     t3 = input.runningTime()
     while (true) {
-        if (input.runningTime() - t3 >= 500) {
+        if (input.runningTime() - t3 >= 800) {
             neZha.setServoAngel(neZha.ServoTypeList._180, neZha.ServoList.S1, 48)
             前进(1500)
             for (let index = 0; index < 4; index++) {
@@ -130,7 +134,7 @@ input.onButtonPressed(Button.A, function () {
     while (true) {
         if (input.runningTime() - t7 >= 1700) {
             basic.showIcon(IconNames.Heart)
-            右转(800)
+            右转(1100)
             break;
         } else {
             内巡线()
@@ -186,7 +190,7 @@ function 慢后退 (数字: number) {
 }
 function 前进慢 (时间: number) {
     // 右
-    neZha.setMotorSpeed(neZha.MotorList.M1, -20)
+    neZha.setMotorSpeed(neZha.MotorList.M1, -18)
     neZha.setMotorSpeed(neZha.MotorList.M2, 16)
     basic.pause(时间)
 }
