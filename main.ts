@@ -41,7 +41,7 @@ input.onButtonPressed(Button.A, function () {
                     . . # . .
                     `)
                 neZha.setServoAngel(neZha.ServoTypeList._180, neZha.ServoList.S1, 15)
-                前进(230)
+                前进(210)
                 右转(1200)
                 right = 1
                 break;
@@ -73,7 +73,7 @@ input.onButtonPressed(Button.A, function () {
         } else {
             外巡线(1)
         }
-        if (input.runningTime() - T2 >= 1500 && right == 1) {
+        if (input.runningTime() - T2 >= 1400 && right == 1) {
             basic.showIcon(IconNames.SmallHeart)
             左转(600)
             前进(300)
@@ -93,8 +93,22 @@ input.onButtonPressed(Button.A, function () {
         }
     }
     t3 = input.runningTime()
+    l1 = 750
+    r1 = 630
     while (true) {
-        if (input.runningTime() - t3 >= 800) {
+        if (input.runningTime() - t3 >= l1 && T == 1) {
+            neZha.setServoAngel(neZha.ServoTypeList._180, neZha.ServoList.S1, 48)
+            前进(1500)
+            for (let index = 0; index < 4; index++) {
+                前进慢(1000)
+                后退(800)
+            }
+            t3 = 0
+            break;
+        } else {
+            内巡线()
+        }
+        if (input.runningTime() - t3 >= r1 && right == 1) {
             neZha.setServoAngel(neZha.ServoTypeList._180, neZha.ServoList.S1, 48)
             前进(1500)
             for (let index = 0; index < 4; index++) {
@@ -132,7 +146,7 @@ input.onButtonPressed(Button.A, function () {
     }
     t7 = input.runningTime()
     while (true) {
-        if (input.runningTime() - t7 >= 1700) {
+        if (input.runningTime() - t7 >= 1550) {
             basic.showIcon(IconNames.Heart)
             右转(1100)
             break;
@@ -141,7 +155,7 @@ input.onButtonPressed(Button.A, function () {
         }
     }
     t8 = input.runningTime()
-    前进(250)
+    前进(220)
     basic.pause(150)
     neZha.stopAllMotor()
     for (let index = 0; index < 3; index++) {
@@ -203,6 +217,8 @@ let t8 = 0
 let t7 = 0
 let t5 = 0
 let t4 = 0
+let r1 = 0
+let l1 = 0
 let t3 = 0
 let T9 = 0
 let T2 = 0
